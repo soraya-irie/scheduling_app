@@ -13,7 +13,8 @@ class SchedulesController < ApplicationController
       flash[:notice] = "予定を登録しました"
       redirect_to :schedules
     else
-    render "new"
+      flash.now[:alert] = "予定の登録に失敗しました"
+      render "new"
     end
   end
 
@@ -31,14 +32,20 @@ class SchedulesController < ApplicationController
       flash[:notice] = "ユーザーIDが「#{@schedule.id}」の情報を更新しました"
       redirect_to :schedules
     else
-    render "edit"
+      flash.now[:alert] = "情報の更新に失敗しました"
+      render "edit"
     end
   end
 
   def destroy
     @schedule = Schedule.find(params[:id])
-    @schedule.destroy
-    flash[:notice] = "ユーザーを削除しました"
-    redirect_to :schedules
+    if @schedule.destroy
+      flash[:notice] = "ユーザーを削除しました"
+      redirect_to :schedules
+    else
+      flash[:alert] = "ユーザーの削除に失敗しました"
+      redirect_to :schedules
+    end
   end
+    
 end

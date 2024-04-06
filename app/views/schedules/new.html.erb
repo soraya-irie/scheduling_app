@@ -1,5 +1,9 @@
 <h3>予定の新規追加</h3>
 
+<% if flash.now[:alert] %>
+  <p class="alert"><%= flash.now[:alert] %></p>
+<% end %>
+
 <%= render "shared/error", obj: @schedule %>
 
 <%= form_with model: @schedule do |f| %>
@@ -20,7 +24,7 @@
     </tr>
 
     <tr>
-      <th><%= f.label :introduction ,"終日" %></th>
+      <th><%= f.label :allday ,"終日" %></th>
       <td><%= f.check_box :allday %></td>
     </tr>
 

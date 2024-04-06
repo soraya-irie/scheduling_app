@@ -7,15 +7,21 @@
   </tr>
   <tr>
     <th>開始日</th>
-    <td><%= @schedule.startdate %></td>
+    <td><%= @schedule.startdate.strftime('%Y/%m/%d') %></td>
   </tr>
   <tr>
     <th>終了日</th>
-    <td><%= @schedule.enddate %></td>
+    <td><%= @schedule.enddate.strftime('%Y/%m/%d') %></td>
   </tr>
   <tr>
     <th>終日</th>
-    <td><%= @schedule.allday %></td>
+    <td>
+      <% if @schedule.allday %>
+        ◯
+      <% else %>
+    
+      <% end %>
+    </td>
   </tr>
   <tr>
     <th>スケジュールメモ</th>
@@ -27,4 +33,7 @@
   <ul>
     <li><%= link_to "一覧に戻る", :schedules %></li>
   </ul>
+  <ul>
+    <li><%= link_to "編集", [:edit, @schedule] %></li>
+  </ul
 </div>

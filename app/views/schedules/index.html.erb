@@ -4,6 +4,9 @@
   <p class="notice"><%= flash[:notice] %></p>
 <% end %>
 
+<% if flash[:alert] %>
+  <p class="alert"><%= flash[:alert] %></p>
+<% end %>
 <table>
   <thead>
     <tr>
@@ -24,10 +27,16 @@
       <tr>
         <td><%= schedule.id %></td>
         <td><%= schedule.title %></td>
-        <td><%= schedule.startdate %></td>
-        <td><%= schedule.enddate %></td>
-        <td><%= schedule.allday %></td>
-        <td><%= schedule.updated_at.to_s(:datetime_jp) %></td>
+        <td><%= schedule.startdate.strftime('%Y/%m/%d') %></td>
+        <td><%= schedule.enddate.strftime('%Y/%m/%d') %></td>
+        <td>
+          <% if schedule.allday %>
+            ◯
+          <% else %>
+            
+          <% end %>
+        </td>
+        <td><%= schedule.updated_at.strftime('%Y/%m/%d %H:%M') %></td>
         <td>
           <%= link_to "詳細", schedule %>
         </td>
@@ -43,3 +52,7 @@
 </table>
 
 <p><%= link_to "新規追加", :new_schedule %></p>
+
+<p>今日の日付 <%= Date.today.strftime('%Y/%m/%d') %></p>
+<p>予定の合計数: <%= @schedules.count %>件</p>
+
