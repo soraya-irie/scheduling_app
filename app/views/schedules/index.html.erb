@@ -27,6 +27,9 @@
         <td><%= schedule.enddate %></td>
         <td><%= schedule.allday %></td>
         <td><%= schedule.updated_at.to_s(:datetime_jp) %></td>
+        <td>
+          <%= link_to "詳細", schedule %>
+        </td>
       </tr>
     <% end %>
   </tbody>
