@@ -4,6 +4,8 @@
   <p class="alert"><%= flash.now[:alert] %></p>
 <% end %>
 
+<%= render "shared/error", obj: @schedule %>
+
 <%= form_with model: @schedule do |f| %>
   <table>
     <tr>

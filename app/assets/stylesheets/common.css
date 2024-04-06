@@ -12,3 +12,7 @@ table td {
   background-color: #ccf;
   padding: 5px;
 }
+
+.alert {
+  background-color: rgb(216, 58, 58);
+  padding: 5px;
